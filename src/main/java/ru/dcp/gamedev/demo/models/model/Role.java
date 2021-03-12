@@ -2,9 +2,8 @@ package ru.dcp.gamedev.demo.models.model;
 
 public enum Role {
     НЕАВТОРИЗОВАННЫЙ,
-    ЧЕМПИОН,
+    ПОЛЬЗОВАТЕЛЬ,
     МОДЕРАТОР,
-    ФЕЯ,
-    ТРЕНЕР,
+    ДОНАТЕР,
     АДМИНИСТРАТОР
 }
