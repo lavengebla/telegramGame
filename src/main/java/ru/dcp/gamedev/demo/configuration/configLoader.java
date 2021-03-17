@@ -7,6 +7,7 @@ import org.aeonbits.owner.Config.Sources;
 
 @LoadPolicy(LoadType.MERGE)
 @Sources({"classpath:bot.properties",
+        "classpath:game.properties",
           "system:properties"})
 public interface configLoader extends Config {
 
@@ -21,4 +22,8 @@ public interface configLoader extends Config {
 @Key("botName") String botName();
 @Key("botRuName") String botRuName();
 @Key("botToken") String botToken();
+
+@Key("base.stat.min") int getBaseStatMin();
+@Key("base.stat.max") int getBaseStatMax();
+
 }

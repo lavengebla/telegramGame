@@ -27,15 +27,15 @@ public class User extends AbstractBaseEntity {
     @NotNull
     private int userId;
 
-    @Column(name = "name", unique = true, nullable = true)
+    @Column(name = "name", unique = true)
     @NotBlank
     private String name;
 
-    @Column(name = "surname", unique = true, nullable = true)
+    @Column(name = "surname", unique = true)
     @NotBlank
     private String surname;
 
-    @Column(name = "username", unique = true, nullable = true)
+    @Column(name = "username", unique = true)
     @NotBlank
     private String username;
 

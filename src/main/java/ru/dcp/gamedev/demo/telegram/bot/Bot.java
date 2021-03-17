@@ -26,6 +26,8 @@ import ru.dcp.gamedev.demo.models.model.DocumentNotification;
 import ru.dcp.gamedev.demo.models.model.Notification;
 import ru.dcp.gamedev.demo.models.model.Role;
 import ru.dcp.gamedev.demo.models.model.User;
+import ru.dcp.gamedev.demo.models.model.inventory.Item;
+import ru.dcp.gamedev.demo.service.CharacterService;
 import ru.dcp.gamedev.demo.service.NotificationService;
 import ru.dcp.gamedev.demo.service.UserService;
 
@@ -52,6 +54,7 @@ public class Bot extends TelegramLongPollingBot {
 
     private final UserService userService;
     private final NotificationService notificationService;
+    private final CharacterService characterService;
 
     @Override
     public String getBotUsername() {
@@ -67,6 +70,7 @@ public class Bot extends TelegramLongPollingBot {
     public void startBot() {
         createOrUpdateSuperUser();
         sendStartReport();
+        getOrCreateBaseItems();
     }
 
     @PreDestroy
@@ -293,6 +297,21 @@ public class Bot extends TelegramLongPollingBot {
         return inlineKeyboardMarkup;
     }
 
+    private void getOrCreateBaseItems(){
+        List<Item> baseItemsList = new ArrayList<>();
 
+        baseItemsList.add(new Item(Item.item_type.BODY, 5));
+        baseItemsList.add(new Item(Item.item_type.BOOT, 3));
+        baseItemsList.add(new Item(Item.item_type.HEAD, 4));
+        baseItemsList.add(new Item(Item.item_type.RING, 2));
+        baseItemsList.add(new Item(Item.item_type.WEAPON_MELEE, 6));
+        baseItemsList.add(new Item(Item.item_type.WEAPON_RANGE, 6));
+        baseItemsList.add(new Item(Item.item_type.WEAPON_MAGIC, 6));
+
+        for (Item item: baseItemsList
+             ) {
+            characterService.getOrCreate(item.getItemType(), item.getBase_cost());
+        }
+    }
 
 }

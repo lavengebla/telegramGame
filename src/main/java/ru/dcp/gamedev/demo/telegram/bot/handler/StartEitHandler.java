@@ -34,7 +34,7 @@ public class StartEitHandler extends AbstractEditHandler {
     protected List<EditMessageText> handle(User user, Long chatId, String message, int id) {
         return List.of(
                 EditMessageBuilder.create(String.valueOf(chatId), id)
-                        .line("*Приветсвую путник*")
+                        .line("*Приветсвую, путник*")
                         .row()
                         .button("Новое приключение", "/NEW_GAME")
                         .row()

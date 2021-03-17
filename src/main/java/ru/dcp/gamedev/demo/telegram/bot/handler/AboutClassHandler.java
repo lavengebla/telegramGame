@@ -42,7 +42,6 @@ public class AboutClassHandler extends AbstractEditHandler {
 
         Optional<Classes> classEntityOptional  = classService.getById(Integer.parseInt(arguments[0]));
 
-
         //пытаемя расписать
 
         if (classEntityOptional.isPresent()){
